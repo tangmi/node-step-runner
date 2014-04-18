@@ -113,3 +113,23 @@ stepRunner.runStep('number-maker', {}, function() {
     });
 });
 ```
+
+## Using with `npm postpublish`
+
+i made this with the mindset of easily importing my `postpublish` script into my `package.json` file:
+
+```
+npm install srun --save-dev
+```
+
+add to `package.json`
+
+```
+...
+"scripts": {
+    "postpublish": "./node_modules/.bin/srun --script=postpublish"
+}
+...
+```
+
+every time your `npm publish` your module, the patch number will increment by one and you will get a git commit notifying of the release. neato!
