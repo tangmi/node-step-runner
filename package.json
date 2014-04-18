@@ -1,30 +1,34 @@
 {
-  "name": "postpublish-actions",
+  "name": "srun",
   "version": "0.0.1",
-  "description": "script to be invoked on post-publish on your npm modules that can increment version numbers, etc.",
+  "description": "define atomic steps, then build scripts with them. a global context object between steps is included for you!",
   "bin": {
-    "postpublish-actions": "./bin/index.js"
+    "srun": "./bin/index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/tangmi/npm-postpublish-actions.git"
+    "url": "https://github.com/tangmi/node-step-runner.git"
   },
   "keywords": [
     "npm",
     "postpublish",
     "publish",
+    "step",
+    "scripts",
+    "task",
+    "runner",
     "module",
     "development"
   ],
   "author": "tangmi",
   "license": "Artistic License 2.0",
   "bugs": {
-    "url": "https://github.com/tangmi/npm-postpublish-actions/issues"
+    "url": "https://github.com/tangmi/node-step-runner/issues"
   },
-  "homepage": "https://github.com/tangmi/npm-postpublish-actions",
+  "homepage": "https://github.com/tangmi/node-step-runner",
   "dependencies": {
     "yargs": "~1.2.1"
   }

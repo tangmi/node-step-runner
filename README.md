@@ -1,2 +1,2 @@
-# npm-postpublish-actions
+# node-step-runner (`srun`)
 
