@@ -1,8 +1,8 @@
-var StepRunner = require('./step-runner');
+var StepRunner = require('../lib/step-runner');
 
-module.exports = function(verbose, cb) {
+module.exports = function(cb) {
 	var stepRunner = new StepRunner({
-		verbose: verbose
+		verbose: this.verbose
 	});
 
 	stepRunner.runStep('increment-version', {
@@ -14,9 +14,10 @@ module.exports = function(verbose, cb) {
 			stepRunner.runStep('git-commit', {
 				commitMessage: 'Release ' + this['increment-version'].oldVersion,
 			}, function() {
-				stepRunner.runStep('git-push', {}, function() {
-					cb();
-				});
+				// stepRunner.runStep('git-push', {}, function() {
+				// 	cb();
+				// });
+				cb();
 			});
 		});
 	});

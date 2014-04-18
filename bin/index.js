@@ -5,14 +5,15 @@ var argv = require('yargs')
 	.alias('v', 'verbose')
 	.argv;
 
-var VERBOSE = argv.verbose;
+var ctx = {};
+ctx.verbose = argv.verbose;
 
 console.log('');
 console.log('POSTPUBLISH: started');
 console.log('');
 
-require('../lib/index.js')(VERBOSE, function() {
+require('../scripts/postpublish.js').call(ctx, function() {
 	console.log('');
 	console.log('POSTPUBLISH: finished');
 	console.log('');
-})
+});
