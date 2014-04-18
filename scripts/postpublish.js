@@ -14,9 +14,6 @@ module.exports = function(cb) {
 			stepRunner.runStep('git-commit', {
 				commitMessage: 'Release ' + this['increment-version'].oldVersion,
 			}, function() {
-				// stepRunner.runStep('git-push', {}, function() {
-				// 	cb();
-				// });
 				cb();
 			});
 		});
