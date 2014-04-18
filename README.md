@@ -4,7 +4,7 @@ define atomic steps, then build scripts with them. a global context object betwe
 
 mind you, this runner is pretty opinionated
 
-## Why not grunt?
+### Why not grunt?
 
 grunt is hella confusing
 
@@ -15,7 +15,7 @@ grunt is hella confusing
 run scripts with:
 
 ```sh
-srun --script=<scriptname>
+srun --script=<scriptname> [--verbose]
 
 # e.g. srun --script=postpublish # runs ./scripts/postpublish.js
 ```
@@ -26,14 +26,21 @@ steps are individual actions of a script and go in `./lib/steps`.
 
 ```js
 module.exports = {
+    // the pretty/formatted name of the step, only used for display
     name: 'Hello Step',
+
+    // a description of your step, used to help clients understand
+    // what it does and its sideeffects
     description: 'Says hello',
+    
     options: {
         // define options here so people don't have to look through
         // your code to find them. `step-runner` will handle extracting
         // and validating the presence of all the options
         'name': 'Name to say hello to'
     },
+
+    // the action function is given an options parameter and a callback
     action: function(opt, cb) {
         // use the options defined above (given a client has provided them)
         // form the `opt` parameter
@@ -54,7 +61,8 @@ module.exports = function(cb) {
     var stepRunner = new StepRunner({
         verbose: this.verbose
     });
-
+    
+    // you could alternately use promises to control flow
     stepRunner.runStep('increment-version', {
         packagePath: __dirname + '/../package.json'
     }, function() {
@@ -92,6 +100,7 @@ then:
 
 ```js
 stepRunner.runStep('number-maker', {}, function() {
+    // access the context values in your script:
     console.log('give me a number... %s', this['number-maker'].number);
     
     // say some other step needs a number to configure...
