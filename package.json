@@ -1,6 +1,6 @@
 {
   "name": "srun",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "define atomic steps, then build scripts with them. a global context object between steps is included for you!",
   "bin": {
     "srun": "./bin/index.js"
