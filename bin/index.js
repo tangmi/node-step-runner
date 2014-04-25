@@ -15,9 +15,16 @@ ctx.verbose = argv.verbose;
 
 var script = argv.script;
 
-console.log('');
-console.log('%s: started', script);
-console.log('');
+global.log = console.log;
+console.log = function() {
+	var args = Array.prototype.slice.call(arguments, 0);
+	args[0] = "  " + args[0];
+	log.apply(console, args);
+}
+
+log('');
+log('%s: started', script);
+log('');
 
 var scriptPath = path.join(__dirname, '../scripts/', script + '.js');
 if (!fs.existsSync(scriptPath)) {
@@ -26,7 +33,7 @@ if (!fs.existsSync(scriptPath)) {
 }
 
 require(scriptPath).call(ctx, function() {
-	console.log('');
-	console.log('%s: finished', script);
-	console.log('');
+	log('');
+	log('%s: finished', script);
+	log('');
 });
