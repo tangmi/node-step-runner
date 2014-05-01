@@ -6,7 +6,7 @@ module.exports = function(cb) {
 	});
 
 	stepRunner.runStep('increment-version', {
-		packagePath: __dirname + '/../package.json'
+		packagePath: './package.json'
 	}, function() {
 		stepRunner.runStep('git-add', {
 			files: ['package.json']
