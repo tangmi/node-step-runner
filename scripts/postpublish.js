@@ -12,7 +12,7 @@ module.exports = function(cb) {
 			files: ['package.json']
 		}, function() {
 			stepRunner.runStep('git-commit', {
-				commitMessage: 'Release ' + this['increment-version'].oldVersion,
+				commitMessage: ':pizza: Release ' + this['increment-version'].oldVersion,
 			}, function() {
 				cb();
 			});

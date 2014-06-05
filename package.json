@@ -31,7 +31,6 @@
   },
   "homepage": "https://github.com/tangmi/node-step-runner",
   "dependencies": {
-    "yargs": "~1.2.1",
-    "download": "~0.1.16"
+    "yargs": "~1.2.1"
   }
 }
